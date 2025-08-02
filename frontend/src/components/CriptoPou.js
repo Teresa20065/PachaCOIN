@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './CriptoPou.css';
-import alpacaLogo from '../img/alpaca.jpg';
+import alpacalotLogo from '../img/alpaca.jpg';
+import FourImageAnimation from './animation.js';
 
 const CriptoPou = ({ onWalletConnect }) => {
   const [pouType, setPouType] = useState('Individual');
@@ -26,10 +27,7 @@ const CriptoPou = ({ onWalletConnect }) => {
       <div className="cripto-pou-content">
         {/* Left Section */}
         <div className="left-section">
-          <div className="logo-section">
-            <img src={alpacaLogo} alt="PachaCoin Logo" className="main-logo" />
-            <div className="logo-glow"></div>
-          </div>
+             <FourImageAnimation />
           <h1 className="title">Soy PachaCoin</h1>
           <div className="title-underlinepachaco"></div>
           <p className="description">
@@ -53,7 +51,7 @@ const CriptoPou = ({ onWalletConnect }) => {
         <div className="right-section">
           <div className="profile-section">
             <div className="profile-circle">
-              <img src={alpacaLogo} alt="Mascota" className="pet-avatar" />
+              <img src={alpacalotLogo} alt="Mascota" className="pet-avatar" />
             </div>
             <div className="profile-glow"></div>
           </div>

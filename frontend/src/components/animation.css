@@ -1,0 +1,26 @@
+/* FourImageAnimation.css */
+.animation-section {
+  margin: 40px auto;
+  text-align: center;
+}
+
+.animation-title {
+  font-size: 1.5rem;
+  margin-bottom: 16px;
+}
+
+.animation-container {
+  width: 250px;    /* ajusta al tamaño de las imágenes */
+  height: 250px;
+  overflow: hidden;
+  position: relative;
+  margin: 0 auto;
+}
+
+.animated-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  image-rendering: pixelated;
+  transition: opacity 0.4s ease-in-out;
+}
