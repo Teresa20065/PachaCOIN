@@ -1,0 +1,75 @@
+.dashboard-container {
+  display: flex;
+  height: 100vh;
+  background-color: #000;
+  color: white;
+  font-family: 'Arial', sans-serif;
+}
+
+.main-content {
+  flex: 1;
+  background-color: #000;
+  padding: 2px;
+  overflow-y: auto;
+}
+
+/* Content Cards Grid */
+.content-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto auto auto;
+  gap: 1.5rem;
+  height: 100%;
+}
+
+.content-card {
+  background-color: #333;
+  border-radius: 12px;
+  padding: 1.5rem;
+  position: relative;
+  min-height: 200px;
+}
+
+.content-card.large {
+  grid-row: span 2;
+}
+
+.content-card.wide {
+  grid-column: span 2;
+}
+
+.content-card.medium {
+  grid-column: span 1;
+}
+
+/* Profile Picture in Cards */
+.card-profile {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #666;
+  border: 2px solid #444;
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .dashboard-container {
+    flex-direction: column;
+  }
+  
+  .main-content {
+    padding: 1rem;
+  }
+  
+  .content-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
+  .content-card.wide {
+    grid-column: span 1;
+  }
+} 
