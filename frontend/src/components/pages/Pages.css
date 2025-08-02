@@ -157,8 +157,8 @@
   box-shadow: 
     0 6px 20px rgba(255, 215, 0, 0.4),
     0 0 0 2px rgba(255, 215, 0, 0.3);
-  background: linear-gradient(45deg, #dc3545, #c82333);
-  color: white;
+  background: linear-gradient(45deg, #d9e865, #f1db59);
+  color: rgb(0, 0, 0);
 }
 
 .disconnect-btn:hover::before {

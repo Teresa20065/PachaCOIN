@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './Pages.css';
 import alpacaLogo from '../../img/alpaca.jpg';
 import messageImage from '../../img/message.jpg';
+import FourImageAnimation from './animationHome.js';
 
 const Home = ({ onDisconnect }) => {
   const [isHovering, setIsHovering] = useState(false);
@@ -45,7 +46,7 @@ const Home = ({ onDisconnect }) => {
           onMouseEnter={() => setIsHovering(true)}
           onMouseLeave={() => setIsHovering(false)}
         >
-          {isHovering ? 'Desconectar Wallet' : 'Conectando'}
+          {isHovering ? 'Depositar' : 'Depositar'}
         </button>
       </div>
       
@@ -53,7 +54,7 @@ const Home = ({ onDisconnect }) => {
         {/* Oval Image Card - Top Left */}
         <div className="content-card oval-image-card">
           <div className="oval-container">
-            <img src={messageImage} alt="Mensaje" className="oval-image" />
+            <FourImageAnimation/>
             <div className="text-balloon">
               <div className="balloon-content">
                 <span className="message-text">{messages[currentMessage]}</span>
