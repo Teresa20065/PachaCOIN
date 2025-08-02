@@ -21,7 +21,6 @@ const FinancialSummary = () => {
     { week: 'Semana 5', amount: 220, color: '#FFD700' },
     { week: 'Semana 6', amount: 300, color: '#FFA500' },
     { week: 'Semana 7', amount: 280, color: '#FFD700' },
-    { week: 'Semana 8', amount: 350, color: '#FFA500' }
   ];
 
   const maxAmount = Math.max(...weeklyData.map(item => item.amount));
@@ -86,11 +85,11 @@ const FinancialSummary = () => {
         </div>
 
         {/* Circular Chart Card */}
-        <div className="content-card chart-card">
+        <div className="content-card">
           <div className="card-header">
-            <h4>📊 Gastos por Categoría</h4>
+            <h4>📊 Categoria de inversiones</h4>
           </div>
-          <div className="circular-chart-container">
+          <div className="circular-chart-container chart-card">
             <div className="circular-chart">
               <div className="chart-circle">
                 <div className="circle-segment games" style={{ transform: 'rotate(0deg)' }}>

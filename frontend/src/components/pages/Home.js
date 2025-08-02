@@ -32,6 +32,7 @@ const Home = ({ onDisconnect }) => {
       onDisconnect();
     }
   };
+  
 
   return (
     <div className="page-content">
@@ -42,7 +43,7 @@ const Home = ({ onDisconnect }) => {
         </div>
         <button 
           className="disconnect-btn" 
-          onClick={handleDisconnect}
+          onClick="haz recibido 5eth"
           onMouseEnter={() => setIsHovering(true)}
           onMouseLeave={() => setIsHovering(false)}
         >
