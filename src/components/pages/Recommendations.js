@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './Pages.css';
-import alpacaLogo from '../../img/alpaca.jpg';
+import alpacaLogo from '../img/alpaca.jpg';
 
 const Recommendations = () => {
   const [activeCategory, setActiveCategory] = useState('all');

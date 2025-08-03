@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './publicAddress.css';
-import alpacaLogo from '../../img/alpaca.jpg';
+import alpacaLogo from '../img/alpaca.jpg';
 
 const PublicAddress = () => {
   const [copiedAddress, setCopiedAddress] = useState(false);

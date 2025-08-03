@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './CriptoPou.css';
-import alpacalotLogo from '../img/alpaca.jpg';
+import alpacalotLogo from './img/alpaca.jpg';
 import FourImageAnimation from './animation.js';
 
 const CriptoPou = ({ onWalletConnect }) => {

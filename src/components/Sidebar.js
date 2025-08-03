@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './Sidebar.css';
-import alpacaLogo from '../img/alpaca.jpg';
+import alpacaLogo from './img/alpaca.jpg';
 
 const Sidebar = ({ currentPage, setCurrentPage, collapsed, setCollapsed, onDisconnect }) => {
   const [searchQuery, setSearchQuery] = useState('');

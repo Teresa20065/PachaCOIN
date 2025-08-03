@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import './Pages.css';
-import alpacaLogo from '../../img/alpaca.jpg';
-import messageImage from '../../img/message.jpg';
+import alpacaLogo from '../img/alpaca.jpg';
+
+import messageImage from '../img/message.jpg';
 import FourImageAnimation from './animationHome.js';
 
 const Home = ({ onDisconnect }) => {

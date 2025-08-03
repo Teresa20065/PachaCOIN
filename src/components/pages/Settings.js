@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './Pages.css';
-import alpacaLogo from '../../img/alpaca.jpg';
+import alpacaLogo from '../img/alpaca.jpg';
 
 const Settings = () => {
   const [activeTab, setActiveTab] = useState('general');
