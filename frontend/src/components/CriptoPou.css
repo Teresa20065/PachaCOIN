@@ -7,7 +7,7 @@
 /* Main Container */
 .cripto-pou-container {
   min-height: 100vh;
-  background: linear-gradient(135deg, #000000 0%, #000000 70%, #FFD700 100%);
+  background: linear-gradient(135deg, #000000 0%, #000000 70%, #FFff00 100%);
   position: relative;
   overflow: hidden;
   display: flex;

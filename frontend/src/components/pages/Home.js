@@ -7,6 +7,18 @@ import FourImageAnimation from './animationHome.js';
 const Home = ({ onDisconnect }) => {
   const [isHovering, setIsHovering] = useState(false);
   const [currentMessage, setCurrentMessage] = useState(0);
+  const [showDepositModal, setShowDepositModal] = useState(false);
+  const [depositAmount, setDepositAmount] = useState('');
+  const [showSuccess, setShowSuccess] = useState(false);
+  const [successAmount, setSuccessAmount] = useState(0);
+  
+  // Estado del saldo del usuario
+  const [userBalance, setUserBalance] = useState({
+    total: 50,
+    currency: 'USD',
+    change: '+125.50',
+    changePercent: '+1.45%'
+  });
 
   const messages = [
     "¡Hola! ¿Cómo estás hoy? 😊",
@@ -32,6 +44,54 @@ const Home = ({ onDisconnect }) => {
       onDisconnect();
     }
   };
+
+  const handleDeposit = () => {
+    setShowDepositModal(true);
+    setDepositAmount('');
+    setShowSuccess(false);
+  };
+
+  const handleQuickDeposit = (amount) => {
+    setDepositAmount(amount.toString());
+  };
+
+  const processDeposit = () => {
+    const amount = parseFloat(depositAmount);
+    
+    if (!isNaN(amount) && amount > 0) {
+      // Calcular el nuevo total
+      const newTotal = userBalance.total + amount;
+      
+      // Calcular el cambio (simulado)
+      const changeAmount = amount * 0.025; // 2.5% de ganancia simulada
+      const newChange = `+${changeAmount.toFixed(2)}`;
+      const newChangePercent = `+${((changeAmount / userBalance.total) * 100).toFixed(2)}%`;
+      
+      // Actualizar el estado del saldo
+      setUserBalance(prevBalance => ({
+        ...prevBalance,
+        total: newTotal,
+        change: newChange,
+        changePercent: newChangePercent
+      }));
+      
+      setSuccessAmount(amount);
+      setShowSuccess(true);
+      
+      // Cerrar el modal después de 3 segundos
+      setTimeout(() => {
+        setShowDepositModal(false);
+        setShowSuccess(false);
+        setDepositAmount('');
+      }, 3000);
+    }
+  };
+
+  const closeModal = () => {
+    setShowDepositModal(false);
+    setShowSuccess(false);
+    setDepositAmount('');
+  };
   
 
   return (
@@ -43,7 +103,7 @@ const Home = ({ onDisconnect }) => {
         </div>
         <button 
           className="disconnect-btn" 
-          onClick="haz recibido 5eth"
+          onClick={handleDeposit}
           onMouseEnter={() => setIsHovering(true)}
           onMouseLeave={() => setIsHovering(false)}
         >
@@ -55,6 +115,22 @@ const Home = ({ onDisconnect }) => {
         {/* Oval Image Card - Top Left */}
         <div className="content-card oval-image-card">
           <div className="oval-container">
+            {/* Saldo del usuario */}
+            <div className="balance-display">
+              <div className="balance-header">
+                <span className="balance-icon">💰</span>
+                <span className="balance-label"> Tus ahorros </span>
+              </div>
+              <div className="balance-amount">
+                <span className="balance-currency">{userBalance.currency}</span>
+                <span className="balance-value">${userBalance.total.toLocaleString()}</span>
+              </div>
+              <div className="balance-change">
+                <span className="change-amount">{userBalance.change}</span>
+                <span className="change-percent">({userBalance.changePercent})</span>
+              </div>
+            </div>
+            
             <FourImageAnimation/>
             <div className="text-balloon">
               <div className="balloon-content">
@@ -200,6 +276,107 @@ const Home = ({ onDisconnect }) => {
           </div>
         </div>
       </div>
+
+      {/* Modal de Depósito */}
+      {showDepositModal && (
+        <div className="deposit-modal-overlay" onClick={closeModal}>
+          <div className="deposit-modal" onClick={(e) => e.stopPropagation()}>
+            {!showSuccess ? (
+              <>
+                <div className="deposit-modal-header">
+                  <div className="deposit-modal-icon">💰</div>
+                  <h3 className="deposit-modal-title">Realizar Depósito</h3>
+                  <p className="deposit-modal-subtitle">Ingresa el monto que deseas depositar en tus ahorros</p>
+                </div>
+                
+                <div className="deposit-form">
+                  <div className="deposit-options">
+                    <div 
+                      className="deposit-option" 
+                      onClick={() => handleQuickDeposit(10)}
+                    >
+                      $10
+                    </div>
+                    <div 
+                      className="deposit-option" 
+                      onClick={() => handleQuickDeposit(25)}
+                    >
+                      $25
+                    </div>
+                    <div 
+                      className="deposit-option" 
+                      onClick={() => handleQuickDeposit(50)}
+                    >
+                      $50
+                    </div>
+                    <div 
+                      className="deposit-option" 
+                      onClick={() => handleQuickDeposit(100)}
+                    >
+                      $100
+                    </div>
+                    <div 
+                      className="deposit-option" 
+                      onClick={() => handleQuickDeposit(250)}
+                    >
+                      $250
+                    </div>
+                    <div 
+                      className="deposit-option" 
+                      onClick={() => handleQuickDeposit(500)}
+                    >
+                      $500
+                    </div>
+                  </div>
+                  
+                  <div className="deposit-input-group">
+                    <label className="deposit-label">Monto Personalizado (USD)</label>
+                    <div className="deposit-input-container">
+                      <input
+                        type="number"
+                        className="deposit-input"
+                        placeholder="0.00"
+                        value={depositAmount}
+                        onChange={(e) => setDepositAmount(e.target.value)}
+                        min="0"
+                        step="0.01"
+                      />
+                      <span className="deposit-currency">USD</span>
+                    </div>
+                  </div>
+                </div>
+                
+                <div className="deposit-modal-actions">
+                  <button className="deposit-btn secondary" onClick={closeModal}>
+                    Cancelar
+                  </button>
+                  <button 
+                    className="deposit-btn primary" 
+                    onClick={processDeposit}
+                    disabled={!depositAmount || parseFloat(depositAmount) <= 0}
+                  >
+                    Depositar
+                  </button>
+                </div>
+              </>
+            ) : (
+              <div className="deposit-success">
+                <div className="deposit-success-icon">✅</div>
+                <h3 className="deposit-success-title">¡Depósito Exitoso!</h3>
+                <p className="deposit-success-message">
+                  Tu depósito ha sido procesado correctamente
+                </p>
+                <div className="deposit-success-amount">
+                  +${successAmount.toFixed(2)} USD
+                </div>
+                <p className="deposit-success-message">
+                  Tu nuevo saldo se ha actualizado automáticamente
+                </p>
+              </div>
+            )}
+          </div>
+        </div>
+      )}
     </div>
   );
 };

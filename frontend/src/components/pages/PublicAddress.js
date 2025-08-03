@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './Pages.css';
+import './publicAddress.css';
 import alpacaLogo from '../../img/alpaca.jpg';
 
 const PublicAddress = () => {

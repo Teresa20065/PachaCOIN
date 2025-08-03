@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './App.css';
 import CriptoPou from './components/CriptoPou';
 import Dashboard from './components/Dashboard';
-
+//este es el nuevo repositorio
 function App() {
   const [currentView, setCurrentView] = useState('criptoPou');
 
